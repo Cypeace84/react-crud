@@ -1,7 +1,6 @@
-import { Button, Card, p, ListGroup, Row } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { Button, Card } from 'react-bootstrap';
+
 import { Link } from 'react-router-dom';
-import { getAllPosts } from '../../redux/store';
 
 const Posts = ({ title, author, publishedDate, shortDescription, id }) => {
   return (

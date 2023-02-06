@@ -1,9 +1,8 @@
 import { Button, Container, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllPosts } from '../../redux/store';
+import { getAllPosts } from '../../redux/postRedux';
 import Posts from '../features/Posts';
-import Post from './Post';
 
 const Home = () => {
   const posts = useSelector(getAllPosts);
