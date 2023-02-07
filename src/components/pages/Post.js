@@ -17,7 +17,12 @@ const Post = () => {
     dispatch(removePost(id));
     handleClose();
   };
-  console.log(id);
+  // useEffect(() => {
+  //   if (!postData) {
+  //     <Navigate to='/' />;
+  //   }
+  // }, [postData]);
+
   if (!postData) return <Navigate to='/' />;
   return (
     <>
@@ -27,7 +32,7 @@ const Post = () => {
             <Col xs={12} md={8}>
               <Card.Title className='m-0'>{postData.title}</Card.Title>
             </Col>
-            <Col xs={6} md={4} className='d-flex '>
+            <Col xs={6} md={4} className='d-flex my-3'>
               <Link to={'/post/edit/' + id}>
                 <Button variant='outline-info'>Edit</Button>
               </Link>
