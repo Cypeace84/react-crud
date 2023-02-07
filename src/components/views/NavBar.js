@@ -20,7 +20,7 @@ const NavBar = () => {
           className='justify-content-end'
           id='responsive-navbar-nav'
         >
-          <Nav className='ml-auto pe-3'>
+          <Nav className='ml-auto px-3'>
             <Nav.Link as={NavLink} to='/'>
               Home
             </Nav.Link>
