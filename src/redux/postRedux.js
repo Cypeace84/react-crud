@@ -1,4 +1,5 @@
 import shortid from 'shortid';
+import initialState from './initialState';
 
 //selectors
 export const getPostById = ({ posts }, id) =>
@@ -6,6 +7,8 @@ export const getPostById = ({ posts }, id) =>
 console.log(getPostById);
 
 export const getAllPosts = (state) => state.posts;
+// export const getAllCategories = (state) => state.categories;
+// console.log('getAllCat:', getAllCategories(initialState));
 // actions
 const createActionName = (actionName) => `app/posts/${actionName}`;
 const REMOVE_POST = createActionName('REMOVE_POST');

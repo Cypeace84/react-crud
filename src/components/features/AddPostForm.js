@@ -15,6 +15,7 @@ const AddPostForm = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (post) => {
+    console.log('post', post);
     dispatch(addPost(post));
     navigate('/');
   };

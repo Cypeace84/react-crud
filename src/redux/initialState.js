@@ -33,6 +33,17 @@ const initialState = {
       author: 'John Doe',
     },
   ],
+  categories: ['Sport', 'News', 'Movies'],
+  //   {
+  //     Sport: 'Sport',
+  //   },
+  //   {
+  //     News: 'News',
+  //   },
+  //   {
+  //     Movies: 'Movies',
+  //   },
+  // ],
 };
 
 export default initialState;

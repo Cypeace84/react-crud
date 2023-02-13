@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Form, Row } from 'react-bootstrap';
+import { Button, Form, FormControl, Row } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -8,6 +8,8 @@ import { useForm } from 'react-hook-form';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import { useRoutes } from 'react-router-dom';
+import { getAllCategories } from '../../redux/categoriesRedux';
+import { useSelector } from 'react-redux';
 
 const PostForm = ({ action, actionText, ...props }) => {
   const [title, setTitle] = useState(props.title || '');
@@ -19,13 +21,16 @@ const PostForm = ({ action, actionText, ...props }) => {
   const [content, setContent] = useState(props.content || '');
   const [contentError, setContentError] = useState(false);
   const [dateError, setDateError] = useState(false);
+  const [category, setCategory] = useState('');
 
   const {
     register,
     handleSubmit: validate,
     formState: { errors },
   } = useForm();
-
+  console.log('category', category);
+  const options = useSelector(getAllCategories);
+  console.log('options', options);
   // console.log('props.title:', props.title);
   // console.log('props:', props);
 
@@ -36,7 +41,14 @@ const PostForm = ({ action, actionText, ...props }) => {
     if (!content || !publishedDate) {
       return;
     } else {
-      action({ title, author, publishedDate, shortDescription, content });
+      action({
+        title,
+        author,
+        publishedDate,
+        shortDescription,
+        content,
+        category,
+      });
     }
   };
 
@@ -60,7 +72,6 @@ const PostForm = ({ action, actionText, ...props }) => {
           )}
         </Form.Group>
       </Row>
-
       <Row>
         <Form.Group className='mb-3 col-sm-6' as={Col} controlId='formAuthor'>
           <Form.Label>Author</Form.Label>
@@ -78,7 +89,6 @@ const PostForm = ({ action, actionText, ...props }) => {
           )}
         </Form.Group>
       </Row>
-
       <Row>
         <Form.Group
           as={Col}
@@ -103,7 +113,25 @@ const PostForm = ({ action, actionText, ...props }) => {
           /> */}
         </Form.Group>
       </Row>
-
+      {/* ////////////////////////////////////////// */}
+      <Row>
+        <Form.Group as={Col} controlId='formCategory' className='col-sm-6 mb-3'>
+          <Form.Label>Category</Form.Label>
+          <Form.Control
+            as='select'
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value='' disabled>
+              Select Category...
+            </option>
+            {options.map((option) => (
+              <option value={option}>{option}</option>
+            ))}
+          </Form.Control>
+        </Form.Group>
+      </Row>
+      {/* ///////////////////////////////////////// */}
       <Row>
         <Form.Group as={Col} controlId='formDescription' className='mb-3'>
           <Form.Label>Short Description</Form.Label>
@@ -142,7 +170,6 @@ const PostForm = ({ action, actionText, ...props }) => {
           /> */}
         </Form.Group>
       </Row>
-
       <Button variant='primary' type='submit'>
         {/* Add post */}
         {actionText}
