@@ -53,7 +53,9 @@ const Post = () => {
             <strong>Published: </strong>
             {postData.publishedDate}
           </Card.Text>
-          <Card.Text className='mb-4'>{postData.content}</Card.Text>
+          <Card.Text className='mb-4'>
+            <p dangerouslySetInnerHTML={{ __html: postData.content }} />
+          </Card.Text>
         </Card.Body>
       </Card>
       <div
