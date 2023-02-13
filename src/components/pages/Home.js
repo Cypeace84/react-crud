@@ -25,6 +25,7 @@ const Home = () => {
             publishedDate={post.publishedDate}
             shortDescription={post.shortDescription}
             id={post.id}
+            category={post.category}
           />
         ))}
       </Row>

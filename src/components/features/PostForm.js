@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Form, FormControl, Row } from 'react-bootstrap';
+import { Button, Form, Row } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -7,7 +7,7 @@ import DatePicker from 'react-datepicker';
 import { useForm } from 'react-hook-form';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import { useRoutes } from 'react-router-dom';
+
 import { getAllCategories } from '../../redux/categoriesRedux';
 import { useSelector } from 'react-redux';
 
