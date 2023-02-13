@@ -3,6 +3,7 @@ import { Button, Card, Col, Modal, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { getPostById, removePost } from '../../redux/postRedux';
+import dateToString from '../../utils/dateToStr';
 
 const Post = () => {
   const [show, setShow] = useState(false);
@@ -11,6 +12,8 @@ const Post = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const postData = useSelector((state) => getPostById(state, id));
+  const dateString = dateToString(postData.publishedDate);
+  console.log('dateString', dateString);
 
   const remove = (e) => {
     e.preventDefault();
@@ -51,7 +54,8 @@ const Post = () => {
           </Card.Text>
           <Card.Text className='mb-3'>
             <strong>Published: </strong>
-            {postData.publishedDate}
+            {/* {dateToString(postData.publishedDate)} */}
+            {/* {postData.publishedDate} */}
           </Card.Text>
           <Card.Text className='mb-4'>
             <p dangerouslySetInnerHTML={{ __html: postData.content }} />

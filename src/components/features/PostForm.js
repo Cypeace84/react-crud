@@ -3,6 +3,9 @@ import { Button, Form, Row } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 const PostForm = ({ action, actionText, ...props }) => {
   const [title, setTitle] = useState(props.title || '');
@@ -54,12 +57,16 @@ const PostForm = ({ action, actionText, ...props }) => {
           className='col-sm-6 mb-3'
         >
           <Form.Label>Published</Form.Label>
-          <Form.Control
+          <DatePicker
+            selected={publishedDate}
+            onChange={(e) => setPublishedDate(e.target.value)}
+          />
+          {/* <Form.Control
             type='text'
             placeholder='mm-dd-rr'
             value={publishedDate}
             onChange={(e) => setPublishedDate(e.target.value)}
-          />
+          /> */}
         </Form.Group>
       </Row>
 
